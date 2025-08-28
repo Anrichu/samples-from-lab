@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="book.xsl"?>
+<!DOCTYPE bookstore SYSTEM "book.dtd">
+
+<bookstore>
+    <book>
+        <title>Introduction to XML</title>
+        <author>John Smith</author>
+        <isbn>978-1234567890</isbn>
+        <publisher>Pearson</publisher>
+        <edition>3rd</edition>
+        <price>450.00</price>
+    </book>
+    <book>
+        <title>Web Technologies</title>
+        <author>Mary Johnson</author>
+        <isbn>978-9876543210</isbn>
+        <publisher>O’Reilly</publisher>
+        <edition>2nd</edition>
+        <price>600.00</price>
+    </book>
+</bookstore>
