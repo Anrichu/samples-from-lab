@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Catalogue</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #004080;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #004080;
+            color: white;
+        }
+        td img {
+            height: 80px;
+            width: auto;
+            border-radius: 5px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #003060;
+        }
+    </style>
+    <script>
+        function addToCart(title, author, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ title, author, price, quantity: 1 });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            window.location.href = "cart.html";
+        }
+    </script>
+</head>
+<body>
+
+<h2> Book Catalogue</h2>
+<table>
+    <tr>
+        <th>Cover</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Price</th>
+        <th>Cart</th>
+    </tr>
+    <tr>
+        <td><img src="ikaki.jpeg" alt="Ikigai"></td>
+        <td>Héctor García</td>
+        <td>Penguin Life</td>
+        <td>299</td>
+        <td><button onclick="addToCart('Ikigai','Héctor García',299)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="it_end_with_us.jpeg" alt="It Ends With Us"></td>
+        <td>Colleen Hoover</td>
+        <td>Atria Publications</td>
+        <td>219</td>
+        <td><button onclick="addToCart('It Ends With Us','Colleen Hoover',219)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="java2.jpg" alt="Java 2"></td>
+        <td>Watson</td>
+        <td>BPB Publications</td>
+        <td>35.5</td>
+        <td><button onclick="addToCart('Java 2','Watson',35.5)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="html.jpg" alt="HTML in 24 Hours"></td>
+        <td>Sam Peter</td>
+        <td>Sam Publication</td>
+        <td>50</td>
+        <td><button onclick="addToCart('HTML in 24 Hours','Sam Peter',50)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="building_materials.jpg" alt="Building Materials"></td>
+        <td>S.K. Duggal</td>
+        <td>New Age International</td>
+        <td>340</td>
+        <td><button onclick="addToCart('Building Materials','S.K. Duggal',340)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="surveying.jpg" alt="Surveying"></td>
+        <td>B.C. Punmia</td>
+        <td>Laxmi Publications</td>
+        <td>380</td>
+        <td><button onclick="addToCart('Surveying Vol. 1','B.C. Punmia',380)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="strength_of_materials.jpg" alt="Strength of Materials"></td>
+        <td>R.K. Bansal</td>
+        <td>Laxmi Publications</td>
+        <td>430</td>
+        <td><button onclick="addToCart('Strength of Materials','R.K. Bansal',430)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="upsc_guide.jpg" alt="UPSC Guide"></td>
+        <td>TMH Publications</td>
+        <td>McGraw Hill</td>
+        <td>599</td>
+        <td><button onclick="addToCart('UPSC Civil Services Guide','TMH Publications',599)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="ugc_net.jpg" alt="UGC NET"></td>
+        <td>KVS Madaan</td>
+        <td>Arihant Publications</td>
+        <td>445</td>
+        <td><button onclick="addToCart('UGC NET Paper 1','KVS Madaan',445)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="python_basics.jpg" alt="Python Basics"></td>
+        <td>Tim Hall & J-P Stacey</td>
+        <td>No Starch Press</td>
+        <td>499</td>
+        <td><button onclick="addToCart('Python Basics','Tim Hall & J-P Stacey',499)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="data_structures.jpg" alt="Data Structures"></td>
+        <td>Tenenbaum</td>
+        <td>McGraw-Hill</td>
+        <td>420</td>
+        <td><button onclick="addToCart('Data Structures Using C','Tenenbaum',420)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="dbms.jpg" alt="Database Systems"></td>
+        <td>Silberschatz</td>
+        <td>McGraw-Hill</td>
+        <td>570</td>
+        <td><button onclick="addToCart('Database System Concepts','Silberschatz',570)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="digital_electronics.jpg" alt="Digital Electronics"></td>
+        <td>M. Morris Mano</td>
+        <td>Pearson</td>
+        <td>460</td>
+        <td><button onclick="addToCart('Digital Electronics','M. Morris Mano',460)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="analog_communication.jpg" alt="Analog Communication"></td>
+        <td>Simon Haykin</td>
+        <td>Wiley</td>
+        <td>520</td>
+        <td><button onclick="addToCart('Analog Communication','Simon Haykin',520)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="electrical_machines.jpg" alt="Electrical Machines"></td>
+        <td>P.S. Bimbhra</td>
+        <td>Khanna Publishers</td>
+        <td>450</td>
+        <td><button onclick="addToCart('Electrical Machines','P.S. Bimbhra',450)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="power_systems.jpg" alt="Power Systems"></td>
+        <td>C.L. Wadhwa</td>
+        <td>New Age International</td>
+        <td>520</td>
+        <td><button onclick="addToCart('Power Systems','C.L. Wadhwa',520)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="world_history.jpg" alt="World History"></td>
+        <td>J.M. Roberts</td>
+        <td>Penguin Books</td>
+        <td>399</td>
+        <td><button onclick="addToCart('World History','J.M. Roberts',399)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="sociology_book.jpg" alt="Sociology Book"></td>
+        <td>Anthony Giddens</td>
+        <td>Wiley India</td>
+        <td>540</td>
+        <td><button onclick="addToCart('Sociology','Anthony Giddens',540)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="principles_of_management.jpg" alt="Principles of Management"></td>
+        <td>Harold Koontz</td>
+        <td>McGraw Hill</td>
+        <td>360</td>
+        <td><button onclick="addToCart('Principles of Management','Harold Koontz',360)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="financial_management.jpg" alt="Financial Management"></td>
+        <td>Prasanna Chandra</td>
+        <td>McGraw Hill</td>
+        <td>420</td>
+        <td><button onclick="addToCart('Financial Management','Prasanna Chandra',420)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="deep_learning.jpg" alt="Deep Learning"></td>
+        <td>François Chollet</td>
+        <td>Computer Science</td>
+        <td>725</td>
+        <td><button onclick="addToCart('Deep Learning with Python','François Chollet',725)">Add to Cart</button></td>
+    </tr>
+    <tr>
+        <td><img src="indian_constitution.jpg" alt="Constitution of India"></td>
+        <td>Durga Das Basu</td>
+        <td>Humanities</td>
+        <td>410</td>
+        <td><button onclick="addToCart('Introduction to the Constitution of India','Durga Das Basu',410)">Add to Cart</button></td>
+    </tr>
+</table>
+
+</body>
+</html>

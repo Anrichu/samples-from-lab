@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Computer Science Books - Pondicherry University</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f8fc;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #004080;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #004080;
+            color: white;
+        }
+
+        td img {
+            height: 90px;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #003366;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Computer Science Books</h2>
+
+    <table>
+        <tr>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Price</th>
+            <th>Add to Cart</th>
+        </tr>
+        <tr>
+            <td><img src="java2.jpg" alt="Java 2 Programming"></td>
+            <td>Java 2 Programming</td>
+            <td>Watson</td>
+            <td>BPB Publications</td>
+            <td>350</td>
+            <td><button onclick="addToCart('Java 2 Programming', 'Watson', 350)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="python_basics.jpg" alt="Python Basics"></td>
+            <td>Python Basics</td>
+            <td>Tim Hall & J-P Stacey</td>
+            <td>No Starch Press</td>
+            <td>499</td>
+            <td><button onclick="addToCart('Python Basics', 'Tim Hall & J-P Stacey', 499)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="data_structures.jpg" alt="Data Structures"></td>
+            <td>Data Structures Using C</td>
+            <td>Tenenbaum</td>
+            <td>McGraw-Hill</td>
+            <td>420</td>
+            <td><button onclick="addToCart('Data Structures Using C', 'Tenenbaum', 420)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="dbms.jpg" alt="Database Systems"></td>
+            <td>Database System Concepts</td>
+            <td>Silberschatz</td>
+            <td>McGraw-Hill</td>
+            <td>570</td>
+            <td><button onclick="addToCart('Database System Concepts', 'Silberschatz', 570)">Add to Cart</button></td>
+        </tr>
+    </table>
+
+    <script>
+        function addToCart(title, author, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            let existing = cart.find(item => item.title === title);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ title, author, price, quantity: 1 });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(title + " has been added to your cart.");
+            window.location.href = "cart.html";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fiction & Literature - Pondicherry University</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f7f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2f4f4f;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2f4f4f;
+            color: white;
+        }
+
+        td img {
+            height: 90px;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #2f4f4f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1e3636;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Fiction & Literature Books</h2>
+    <table>
+        <tr>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Price</th>
+            <th>Add to Cart</th>
+        </tr>
+        <tr>
+            <td><img src="ikaki.jpeg" alt="Ikigai"></td>
+            <td>Ikigai</td>
+            <td>Héctor García</td>
+            <td>Penguin Life</td>
+            <td>299</td>
+            <td><button onclick="addToCart('Ikigai', 'Héctor García', 299)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="it_end_with_us.jpeg" alt="It Ends With Us"></td>
+            <td>It Ends With Us</td>
+            <td>Colleen Hoover</td>
+            <td>Atria Publications</td>
+            <td>219</td>
+            <td><button onclick="addToCart('It Ends With Us', 'Colleen Hoover', 219)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="java2.jpg" alt="Java 2"></td>
+            <td>Java 2 Programming</td>
+            <td>Watson</td>
+            <td>BPB Publications</td>
+            <td>35.5</td>
+            <td><button onclick="addToCart('Java 2 Programming', 'Watson', 35.5)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="html.jpg" alt="HTML in 24 Hours"></td>
+            <td>HTML in 24 Hours</td>
+            <td>Sam Peter</td>
+            <td>Sam Publication</td>
+            <td>50</td>
+            <td><button onclick="addToCart('HTML in 24 Hours', 'Sam Peter', 50)">Add to Cart</button></td>
+        </tr>
+    </table>
+
+    <script>
+        function addToCart(title, author, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            let existing = cart.find(item => item.title === title);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ title, author, price, quantity: 1 });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(title + " has been added to your cart.");
+            window.location.href = "cart.html";
+        }
+    </script>
+
+</body>
+</html>

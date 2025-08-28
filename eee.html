@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electrical Books - Pondicherry University</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef5f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #003366;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #003366;
+            color: white;
+        }
+
+        td img {
+            height: 90px;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #001f4d;
+        }
+    </style>
+</head>
+<body>
+
+    <h2> Electrical & Electronics Engineering Books</h2>
+
+    <table>
+        <tr>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Price</th>
+            <th>Add to Cart</th>
+        </tr>
+        <tr>
+            <td><img src="electrical_machines.jpg" alt="Electrical Machines"></td>
+            <td>Electrical Machines</td>
+            <td>P.S. Bimbhra</td>
+            <td>Khanna Publishers</td>
+            <td>450</td>
+            <td><button onclick="addToCart('Electrical Machines', 'P.S. Bimbhra', 450)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="power_systems.jpg" alt="Power Systems"></td>
+            <td>Power Systems</td>
+            <td>C.L. Wadhwa</td>
+            <td>New Age International</td>
+            <td>520</td>
+            <td><button onclick="addToCart('Power Systems', 'C.L. Wadhwa', 520)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="control_systems.jpg" alt="Control Systems"></td>
+            <td>Control Systems Engineering</td>
+            <td>I.J. Nagrath & M. Gopal</td>
+            <td>New Age Publishers</td>
+            <td>490</td>
+            <td><button onclick="addToCart('Control Systems Engineering', 'I.J. Nagrath & M. Gopal', 490)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="electrical_networks.jpg" alt="Network Theory"></td>
+            <td>Electrical Networks</td>
+            <td>Smarajit Ghosh</td>
+            <td>PHI Learning</td>
+            <td>390</td>
+            <td><button onclick="addToCart('Electrical Networks', 'Smarajit Ghosh', 390)">Add to Cart</button></td>
+        </tr>
+    </table>
+
+    <script>
+        function addToCart(title, author, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            let existing = cart.find(item => item.title === title);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ title, author, price, quantity: 1 });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(title + " has been added to your cart.");
+            window.location.href = "cart.html";
+        }
+    </script>
+
+</body>
+</html>

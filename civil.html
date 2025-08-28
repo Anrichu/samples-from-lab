@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Civil Engineering Books - Pondicherry University</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f7f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2f4f4f;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2f4f4f;
+            color: white;
+        }
+
+        td img {
+            height: 90px;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #2f4f4f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1e3636;
+        }
+    </style>
+</head>
+<body>
+
+    <h2> Civil Engineering Books</h2>
+
+    <table>
+        <tr>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Price</th>
+            <th>Add to Cart</th>
+        </tr>
+        <tr>
+            <td><img src="building_materials.jpg" alt="Building Materials"></td>
+            <td>Building Materials</td>
+            <td>S.K. Duggal</td>
+            <td>New Age International</td>
+            <td>340</td>
+            <td><button onclick="addToCart('Building Materials', 'S.K. Duggal', 340)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="surveying.jpg" alt="Surveying"></td>
+            <td>Surveying Vol. 1</td>
+            <td>B.C. Punmia</td>
+            <td>Laxmi Publications</td>
+            <td>380</td>
+            <td><button onclick="addToCart('Surveying Vol. 1', 'B.C. Punmia', 380)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="strength_of_materials.jpg" alt="Strength of Materials"></td>
+            <td>Strength of Materials</td>
+            <td>R.K. Bansal</td>
+            <td>Laxmi Publications</td>
+            <td>430</td>
+            <td><button onclick="addToCart('Strength of Materials', 'R.K. Bansal', 430)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="concrete_tech.jpg" alt="Concrete Technology"></td>
+            <td>Concrete Technology</td>
+            <td>M.S. Shetty</td>
+            <td>S. Chand Publishing</td>
+            <td>410</td>
+            <td><button onclick="addToCart('Concrete Technology', 'M.S. Shetty', 410)">Add to Cart</button></td>
+        </tr>
+    </table>
+
+    <script>
+        function addToCart(title, author, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            let existing = cart.find(item => item.title === title);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ title, author, price, quantity: 1 });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(title + " has been added to your cart.");
+            window.location.href = "cart.html";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration - Online Book Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-image: url('library_bg.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #333;
+    }
+
+    .container {
+      width: 60%;
+      margin: 30px auto;
+      background: rgba(255,255,255,0.9);
+      padding: 20px 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      color: #004080;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    td {
+      padding: 10px;
+      vertical-align: top;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+      width: auto;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      display: block;
+      margin-top: 3px;
+    }
+
+    .form-buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .form-buttons input {
+      padding: 10px 20px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0 10px;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .form-buttons input:hover {
+      background-color: #003366;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Registration Form</h2>
+    <form name="regForm" onsubmit="return validateForm()">
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td>
+            <input type="text" name="name" placeholder="Enter your full name">
+            <span class="error" id="nameError"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td>
+            <input type="password" name="password" placeholder="Enter password">
+            <span class="error" id="passwordError"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td>
+            <input type="text" name="email" placeholder="Enter your email">
+            <span class="error" id="emailError"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Phone Number:</td>
+          <td>
+            <input type="text" name="phone" placeholder="Enter 10-digit number">
+            <span class="error" id="phoneError"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Gender:</td>
+          <td>
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female"> Female
+            <span class="error" id="genderError"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Date of Birth:</td>
+          <td>
+            <input type="date" name="dob">
+            <span class="error" id="dobError"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Languages Known:</td>
+          <td>
+            <input type="checkbox" name="lang" value="English"> English
+            <input type="checkbox" name="lang" value="Malayalam"> Malayalam
+            <input type="checkbox" name="lang" value="Tamil"> Tamil
+            <input type="checkbox" name="lang" value="Hindi"> Hindi
+            <span class="error" id="langError"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td>
+            <textarea name="address" rows="4" placeholder="Enter your address"></textarea>
+            <span class="error" id="addressError"></span>
+          </td>
+        </tr>
+      </table>
+
+      <div class="form-buttons">
+        <input type="submit" value="Register">
+        <input type="reset" value="Reset">
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      let valid = true;
+
+      // Clear previous errors
+      document.querySelectorAll(".error").forEach(el => el.textContent = "");
+
+      // Name validation: alphabets + spaces, min 6 chars
+      let name = document.forms["regForm"]["name"].value.trim();
+      if (!/^[A-Za-z\s]{6,}$/.test(name)) {
+        document.getElementById("nameError").textContent = "Name must be at least 6 characters (alphabets only).";
+        valid = false;
+      }
+
+      // Password validation: min 6 chars
+      let password = document.forms["regForm"]["password"].value.trim();
+      if (password.length < 6) {
+        document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
+        valid = false;
+      }
+
+      // Email validation
+      let email = document.forms["regForm"]["email"].value.trim();
+      let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById("emailError").textContent = "Enter a valid email (example: name@domain.com).";
+        valid = false;
+      }
+
+      // Phone number validation: exactly 10 digits
+      let phone = document.forms["regForm"]["phone"].value.trim();
+      if (!/^[0-9]{10}$/.test(phone)) {
+        document.getElementById("phoneError").textContent = "Phone number must be exactly 10 digits.";
+        valid = false;
+      }
+
+      // Gender validation: one must be selected
+      let genderMale = document.forms["regForm"]["gender"][0].checked;
+      let genderFemale = document.forms["regForm"]["gender"][1].checked;
+      if (!genderMale && !genderFemale) {
+        document.getElementById("genderError").textContent = "Please select a gender.";
+        valid = false;
+      }
+
+      // DOB validation: not empty and user must be at least 10 years old (optional, you can remove age check if you want)
+      let dob = document.forms["regForm"]["dob"].value;
+      if (!dob) {
+        document.getElementById("dobError").textContent = "Please select your date of birth.";
+        valid = false;
+      } else {
+        const birthDate = new Date(dob);
+        const today = new Date();
+        const age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        if (age < 10 || (age === 10 && m < 0)) {
+          document.getElementById("dobError").textContent = "You must be at least 10 years old.";
+          valid = false;
+        }
+      }
+
+      // Languages known: at least one must be checked
+      let langs = document.forms["regForm"]["lang"];
+      let langChecked = false;
+      for (let i = 0; i < langs.length; i++) {
+        if (langs[i].checked) {
+          langChecked = true;
+          break;
+        }
+      }
+      if (!langChecked) {
+        document.getElementById("langError").textContent = "Select at least one language.";
+        valid = false;
+      }
+
+      // Address: not empty, min 10 chars
+      let address = document.forms["regForm"]["address"].value.trim();
+      if (address.length < 10) {
+        document.getElementById("addressError").textContent = "Address must be at least 10 characters.";
+        valid = false;
+      }
+
+      if (valid) {
+        alert("Registration successful!");
+        window.location.href = "index.html";
+      }
+
+      return false; // prevent form submission
+    }
+  </script>
+
+</body>
+</html>
